@@ -1,7 +1,6 @@
 from functools import wraps
 
 
-# Decorator for handling user input errors
 def input_error(func):
     """
     Decorator that catches common input errors
@@ -28,6 +27,7 @@ def input_error(func):
 def parse_input(user_input: str):
     """
     Parse user input into command and arguments.
+    Supports one-word and multi-word commands.
     """
 
     parts = user_input.strip().split()
@@ -35,7 +35,24 @@ def parse_input(user_input: str):
     if not parts:
         return "", []
 
-    command = parts[0].lower()
-    args = parts[1:]
+    two_word_commands = {
+        "delete contact",
+        "add birthday",
+        "show birthday",
+        "add email",
+        "show email",
+        "add note",
+        "edit note",
+        "delete note",
+        "show notes",
+        "find note",
+        "add tag",
+        "find tag",
+    }
 
-    return command, args
+    if len(parts) >= 2:
+        possible_command = f"{parts[0].lower()} {parts[1].lower()}"
+        if possible_command in two_word_commands:
+            return possible_command, parts[2:]
+
+    return parts[0].lower(), parts[1:]

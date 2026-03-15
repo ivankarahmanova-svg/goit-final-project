@@ -171,3 +171,27 @@ def find_by_tag(args: list[str], notes_book: NotesBook) -> str:
         return "No notes with this tag."
 
     return "\n".join(str(note) for note in found_notes)
+@input_error
+def add_email(args: list[str], book: AddressBook) -> str:
+    name, email = args
+    record = book.find(name)
+
+    if record is None:
+        raise KeyError
+
+    record.add_email(email)
+    return "Email added."
+
+
+@input_error
+def show_email(args: list[str], book: AddressBook) -> str:
+    name = args[0]
+    record = book.find(name)
+
+    if record is None:
+        raise KeyError
+
+    if record.email is None:
+        return "Email not set."
+
+    return record.email.value
