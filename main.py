@@ -133,7 +133,10 @@ def main():
 
         elif command == "find tag":
             print(find_by_tag(args, notes_book))
-
+        elif command == "search":
+            print(search_contacts(args, address_book))
+        elif command == "sort notes":
+            print(sort_notes_by_tags(args, notes_book))
         else:
             print("Invalid command. Type 'help' to see available commands.")
 

@@ -48,6 +48,7 @@ def parse_input(user_input: str):
         "find note",
         "add tag",
         "find tag",
+        "sort notes",
     }
 
     if len(parts) >= 2:

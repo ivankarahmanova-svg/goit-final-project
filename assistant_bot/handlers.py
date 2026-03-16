@@ -195,3 +195,26 @@ def show_email(args: list[str], book: AddressBook) -> str:
         return "Email not set."
 
     return record.email.value
+@input_error
+def search_contacts(args: list[str], book: AddressBook) -> str:
+    query = args[0].lower()
+
+    results = [
+        str(record)
+        for record in book.data.values()
+        if query in record.name.value.lower()
+    ]
+
+    if not results:
+        return "No contacts found."
+
+    return "\n".join(results)
+@input_error
+def sort_notes_by_tags(args: list[str], notes_book: NotesBook) -> str:
+
+    sorted_notes = notes_book.sort_by_tags()
+
+    if not sorted_notes:
+        return "No notes saved."
+
+    return "\n".join(str(note) for note in sorted_notes)

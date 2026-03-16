@@ -47,3 +47,5 @@ class NotesBook:
         if not self.notes:
             return "No notes saved."
         return "\n".join(str(note) for note in self.notes)
+    def sort_by_tags(self):
+        return sorted(self.notes, key=lambda note: ", ".join(note.tags))
