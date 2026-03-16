@@ -207,7 +207,7 @@ def search_contacts(args: list[str], book: AddressBook) -> str:
 
     if not results:
         return "No contacts found."
-
+    
     return "\n".join(results)
 @input_error
 def sort_notes_by_tags(args: list[str], notes_book: NotesBook) -> str:

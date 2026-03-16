@@ -18,6 +18,8 @@ from assistant_bot.handlers import (
     find_by_tag,
     add_email,
     show_email,
+    search_contacts,
+    sort_notes_by_tags,
 )
 
 
@@ -46,6 +48,7 @@ Notes:
   find note <title>
   add tag <title> <tag>
   find tag <tag>
+  sort notes
 
 General:
   help

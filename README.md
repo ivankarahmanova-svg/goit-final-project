@@ -24,6 +24,7 @@ Personal Assistant Bot — це консольний застосунок на P
 - додавання email
 - перегляд email
 - перегляд усіх контактів
+- пошук контактів за ім'ям
 
 ### Робота з нотатками
 
@@ -34,8 +35,33 @@ Personal Assistant Bot — це консольний застосунок на P
 - пошук нотатки за назвою
 - додавання тегів
 - пошук нотаток за тегом
+- сортування нотаток за тегами
 
----
+## Основні команди
+
+Contacts:
+add <name> <phone>
+change <name> <old_phone> <new_phone>
+phone <name>
+all
+search <name>
+delete contact <name>
+add birthday <name> <DD.MM.YYYY>
+show birthday <name>
+birthdays
+add email <name> <email>
+show email <name>
+
+Notes:
+add note <title> <content>
+edit note <title> <new content>
+delete note <title>
+show notes
+find note <title>
+add tag <title> <tag>
+find tag <tag>
+sort notes
+
 
 ## Встановлення і запуск
 

@@ -117,27 +117,30 @@ class AddressBook(UserDict):
         if name in self.data:
             del self.data[name]
 
-    def get_upcoming_birthdays(self):
+    def get_upcoming_birthdays(self) -> list[dict[str, str]]:
         today = datetime.today().date()
-        upcoming = []
+        upcoming: list[dict[str, str]] = []
 
         for record in self.data.values():
+            birthday_obj = record.birthday
 
-            if record.birthday is None:
+            if birthday_obj is None:
                 continue
 
-            birthday = record.birthday.value
+            birthday = birthday_obj.date
             birthday_this_year = birthday.replace(year=today.year)
 
             if birthday_this_year < today:
-                birthday_this_year = birthday_this_year.replace(year=today.year + 1)
+                birthday_this_year = birthday.replace(year=today.year + 1)
 
             delta = (birthday_this_year - today).days
 
-            if delta <= 7:
-                upcoming.append({
-                    "name": record.name.value,
-                    "congratulation_date": birthday_this_year.strftime("%d.%m.%Y")
-                })
+            if 0 <= delta <= 7:
+                upcoming.append(
+                    {
+                        "name": record.name.value,
+                        "congratulation_date": birthday_this_year.strftime("%d.%m.%Y"),
+                    }
+            )
 
         return upcoming
